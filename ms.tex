@@ -1,0 +1,334 @@
+% Author: Matthew Turner
+
+\documentclass[11pt,letterpaper]{article}
+% \documentclass[11pt]{report}
+% \documentclass{report}
+% \documentclass{book}
+\usepackage[bookmarks]{hyperref}
+\usepackage{amssymb,amsmath}
+% \usepackage{fullpage}
+\usepackage{tabulary}
+\usepackage{tabularx}
+\usepackage{float}
+% \usepackage[margin=1.00in]{geometry}
+\usepackage[margin=0.90in]{geometry}
+
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{pslatex}
+\usepackage{apacite}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\usepackage{wrapfig}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage{setspace}
+\doublespace
+% \usepackage{url}
+\usepackage{bigfoot}
+\usepackage[export]{adjustbox}
+\setlength\intextsep{0pt}
+
+\usepackage{graphicx}
+
+\title{Potential errors of sign and magnitude in behavioral studies of group polarization}
+
+\author{{Matthew A.~Turner}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  ``Group polarization'' is understood as a key social structuring process
+  that increases extremism and exacerbates society-level polarization. 
+  In group polarization,
+  isolated groups similar in their biases on some topic become more extremely biased after
+  deliberation. In order to understand the causes of group polarization, it is 
+  necessary to perform behavioral studies to understand what sorts of groups
+  do go to extremes in which situations. However, following the published
+  behavioral studies would lead one to use statistical methods that are known
+  to cause errors of magnitude and sign in determining effect sizes. 
+  In general, unless one has knowledge of the variances of measurements it is
+  impossible to know if there has been a false inference. In many cases
+  the variance of data were not reported in original studies and are now
+  lost to time. Must we conclude many published results are unreliable? 
+  This paper shows that we can cautiously accept the results. We support
+  this claim with computational experiments that recreate three case studies
+  we use to understand the effects of using metric models on ordinal data
+  in the group polarization setting specifically. We close by discussing the
+  effect these findings have on the state of knowledge about group polarization
+  and social structuring more generally, and whether more complicated ordinal
+  models are really needed over the simpler, easier-to-understand
+  metric models.
+\end{abstract}
+
+
+\section{Introduction}
+
+Problem:
+\begin{enumerate}
+  \item
+    Using differences between 
+    continuous model fits (e.g.\ pre- and post-discussion normal distributions) 
+    to represent differences between participant responses on an ordinal 
+    scale can result in false inferences about that difference
+    \cite{Liddell2018}. Specifically, the error may be one of sign
+    (the calculated effect size was positive but the true effect was negative)
+  \item
+    Many group polarization studies, including some 
+    high profile ones, used metric models on ordinal data. 
+    (COULD DO SOME SIMPLE METASCIENCE TO QUANTIFY HOW IMPACTFUL 
+    AFFECTED STUDIES HAVE BEEN IN TERMS OF CITATIONS)
+\end{enumerate}
+
+These facts lead to the following related questions:
+\begin{enumerate}
+  \item 
+    Must published group polarization studes be rejected due to
+    false statistical inferences?
+  \item 
+    Assuming published studies need not be rejected, must new group 
+    polarization behavioral studies use a more complex
+    statistical model than, say, a t-test? 
+\end{enumerate}
+
+Now that we have introduced the general problems and questions, we will explain
+in more detail just what effects are being estimated by a continuous model
+of opinion change. We will do this by first introducing the group polarization
+phenomenon, theoretical explanations, and supporting evidence. Then we will
+brielfy introduce how our model of statistical inference for group 
+polarization may result in false inferences~\cite{Liddell2018}. In our
+Results we will then apply this model three case studies taken from the
+group polarization literature that use metric models with ordinal data.
+Through simulations using published data and some knowledge about the
+group polarization study procedures we will determine whether or not
+results from these individual case studies must be rejected due to 
+potentially false inferences.
+
+\subsection{Group polarization studies not affected by this problem}
+
+The group polarization effect is considered robust. The theory of group polarization has had
+broader impacts beyond social psychology, notably on political psychology
+and law~\cite{Sunstein2002,Sunstein2009,Sunstein2019}. Whether or not the 
+published behavioral studies we analyze here using metric models on 
+ordinal data make false inferences,  there are several alternative approaches
+to group polarization experimental design. I explain some here to help us
+better understand what group polarization is and explaining how the 
+published empirical studies under investigation here fit within the broader
+scope of group polarization studies.
+
+\begin{itemize}
+  \item Gambling studies where opinions are about how much risk is 
+    acceptable \cite{Blascovich1973,Blascovich1974,Blascovich1975,Blascovich1975a,Blascovich1976}
+  \item Pattern-oriented approach of \citeA{Mas2013} to demonstrate their
+    model predicted general patterns of observed opinion dynamics.
+  \item Jury deliberations about how much money to reward plaintiffs
+    \cite{Myers1976,Kaplan1977,Schkade2000}.
+\end{itemize}
+
+\subsection{Group opinion polarization experiment design}
+
+\begin{enumerate}
+  \item
+    (INTRO PAR) In this paper we develop a model of group opinion shift measurement,
+    detection, and quantification based on experimental design in the literature.
+    To motivate our model development, here we identify a common set of
+    design elements used in group opinion polarization experiments and 
+    provide some examples of how existing studies vary this basic design in
+    order to answer specific theoretical questions about group polarization.
+    \begin{itemize}
+      \item 
+        There are some basic, common elements among opinion-based group polarization
+        which together we call the ``basic experimental paradigm'' for reference.
+        In details, opinion-based group polarization experiments can vary greatly
+        as needed for testing specific hypotheses.
+      \item 
+        No matter the research question, the basic outcome measure is the 
+        group opinion shift before and after discussion. There are various ways
+        to perform the measurements of individual opinions, but all 
+        group polarization studies must measure a group opinion shift. 
+        In group polarization studies, several group shifts are observed, so 
+        the statistical tests to quantify the magnitude and sign of choice shift
+        compare the pre-discussion and post-discussion opinion distributions.
+      \item
+        In the Model section below we explain in more detail methodologies
+        for quantifying this shift. For now we focus on reviewing existing
+        approaches to experimental design for inducing group opinion shifts.
+      \item
+        To give an illustrative example with historical relevance, we will use
+        examples of how the research question and hypotheses have guided
+        experimental design. These experiments were designed
+        to determine the extent to which
+        group opinion polarization occurs due to either 
+        ``social comparisons''~\cite{Myers1978} or ``persuasive 
+        arguments''~\cite{Vinokur1978}, 
+        or in some combination of the 
+        two~\cite{Burnstein1973,Burnstein1977,Sieber2019}.
+    \end{itemize}
+  \item 
+    (THE BASIC EXPERIMENTAL PARADIGM---can still use examples, but focus
+    only on the high level)
+  \item 
+    (OVERVIEW OF VARIATIONS AND THEIR PURPOSE---eg separating social comparisons
+    from persuasive arguments requires an argument-free condition; explain 
+    how those work so the reader understands the scope of the model)
+\end{enumerate}
+
+
+
+\section{Model}
+
+\begin{enumerate}
+  \item 
+    Model has two levels: group level and individual level. 
+  \item 
+    Group polarization operates at the group level. In order to
+    detect group polarization, two distributions of participant opinions
+    are observed: the pre-discussion and post-discussion distributions in the
+    basic
+  \item 
+    The purpose of the current research is to understand the impact of 
+    statistical model choice on the reliability of published and future
+    experimental results. 
+  \item 
+    The distribution of reported opinions depends on
+    how individual opinions were measured in the first place. 
+  \item 
+    This present
+    study then does not develop a generative model of group polarization
+    based on individual-level psychology. Instead we develop a measurement
+    and distributional model of group polarization. Exactly which psychological
+    processes are at work in group polarization are irrelevant when designing
+    a statistical inference procedure for detecting and quantifying 
+    group opinion shifts.
+  \item 
+    (SUBSEC) Psychology and measurement of opinions
+    \begin{itemize}
+      \item 
+        If we use a Likert-style scale for measuring opinions we force 
+        participants to report changes in their opinions on a discrete scale.
+      \item Psychologically, it seems unlikely that opinions change from,
+        e.g., ``Somewhat Agree'' to ``Agree'' in such discrete steps. We
+        are convinced little by little (REF), though large opinion shifts
+        are possible (REF).
+      \item
+        A further complication is that we don't know exactly how the 
+        theoretical \emph{latent opinions} somehow stored in our brain connect
+        to the \emph{reported opinions} given by participants in response
+        to survey questions.
+    \end{itemize}
+  \item
+    (SUBSEC) Detecting shift in group opinions
+    
+    \begin{itemize}
+      \item 
+        Common approaches in literature 
+        (FOCUS ON STATISTICS USED IN CASE STUDIES TO START).
+      \item 
+        Common approaches are potentially problemantic~\cite{Liddell2018}.
+        \begin{itemize}
+          \item
+            Prototypical examples adapted from Liddell and Kruschke
+          \item 
+            In the prototypical examples given above, certain parameters
+            may be having an impact on the probability that an inference is
+            false. 
+            \begin{itemize}
+              \item 
+                One of those parameters is explicitly set to \emph{generate}
+                the false inferences, the variance. 
+              \item
+                In order to generate false inferences in opinion shifts, 
+                it was necessary that the pre-discussion variance be
+                less than the post-discussion variance. 
+              \item
+                In group polarization experiments, the reverse is the case:
+                pre-discussion opinions are initially more diverse than
+                post-discussion opinions. This is due to the theoretical 
+                operation of consensus formation that tends to regress opinions
+                towards the mean~\cite{French1956,DeGroot1974}, even if that mean
+                shifts, as it does in group polarization due to underlying
+                psychological mechanisms~\cite{Sieber2019,Turner2020}.
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+
+  \item
+    (SUBSEC)
+    Computational experiments to detect false inferences
+    \begin{itemize}
+      \item 
+        False positives: set latent means to be exactly equal and see if
+        metric model infers significant difference.
+      \item 
+        False negatives: set latent means to be significantly different
+        and see if metric model infers no difference.
+      \item 
+        Errors of sign (sign inversion): set latent means to be significantly
+        different in one ordering, see if model infers the inverse ordering.
+        E.g., pre-discussion mean greater than
+        post-discussion mean, but model infers the inverse.
+      \item
+        We will apply this method to three case studies in the Results below,
+        from which we can begin to make broader judgments about the chance
+        an average group opinion polarization study can be trusted or not.
+    \end{itemize}
+\end{enumerate}
+
+\section{Resuts}
+
+In this section we apply our model to three case studies taken from the 
+literature. 
+
+\subsection{Case study I: A tale of two cities in Colorado, USA, in 2010}
+
+We begin by evalutating a study of attitudes about group 
+polarization on political topics
+in the United States. In \citeA{Schkade2010}, 
+although ordinal models are used for analysis of metric data, the paper 
+included information about the variance of opinions. This extra information
+allows us to conclude that this study does not make false inferences due to
+using a metric model on an ordinal dataset.
+
+\begin{enumerate}
+  \item Introduction of the study:
+    \begin{enumerate}
+      \item Specific research questions 
+      \item Experimental design (participant pool, survey questions,
+        methodology---measurement and analysis)
+    \end{enumerate}
+  \item Study data and conclusions 
+  \item Representation of this experimental design with our model
+  \item Model results and determination of false inference due to 
+    metric model on ordinal data
+\end{enumerate}
+
+\subsection{Case study II: French attitudes about their president and Americans}
+
+\citeA{Moscovici1969}
+
+
+\subsection{Case study III: Racial attitudes in the USA in the late 1960s}
+
+\citeA{Myers1970}
+
+\section{Discussion}
+
+
+% Make sure to RePAV your paper often. That is, check on how well you have
+% stated
+% \begin{enumerate}
+%   \item \textbf{Re}search tradition/community you are addressing
+%   \item \textbf{P}roblem you are addressing/solving
+%   \item \textbf{A}pproach taken
+%   \item \textbf{V}alue of the work
+% \end{enumerate}
+
+\bibliographystyle{apacite}
+
+\setlength{\bibleftmargin}{.125in}
+\setlength{\bibindent}{-\bibleftmargin}
+
+\bibliography{/Users/mt/workspace/papers/library.bib}
+
+\end{document}
