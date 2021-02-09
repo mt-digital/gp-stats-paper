@@ -68,34 +68,19 @@
 Problem:
 \begin{enumerate}
   \item
-    Using differences between 
-    continuous model fits (e.g.\ pre- and post-discussion normal distributions) 
-    to represent differences between participant responses on an ordinal 
-    scale can result in false inferences about that difference
-    \cite{Liddell2018}. Specifically, the error may be one of sign
-    (the calculated effect size was positive but the true effect was negative)
-  \item
-    Many group polarization studies, including some 
-    high profile ones, used metric models on ordinal data. 
-    (COULD DO SOME SIMPLE METASCIENCE TO QUANTIFY HOW IMPACTFUL 
-    AFFECTED STUDIES HAVE BEEN IN TERMS OF CITATIONS)
+    Is there really evidence for group polarization as a general phenomenon?
+    \begin{itemize}
+      \item 
+        This question arises due to several existing, commonly-referenced
+        studies using metric
+        statistical models to make inferences with ordinal data, which leads
+        to false inferences in certain situations~\cite{Liddell2018}.
+    \end{itemize}
 \end{enumerate}
 
-These facts lead to the following related questions:
-\begin{enumerate}
-  \item 
-    Must published group polarization studes be rejected due to
-    false statistical inferences?
-  \item 
-    Assuming published studies need not be rejected, must new group 
-    polarization behavioral studies use a more complex
-    statistical model than, say, a t-test? 
-\end{enumerate}
-
-Now that we have introduced the general problems and questions, we will explain
-in more detail just what effects are being estimated by a continuous model
-of opinion change. We will do this by first introducing the group polarization
-phenomenon, theoretical explanations, and supporting evidence. Then we will
+We will now introduce the group polarization
+phenomenon, theoretical explanations, and review supporting evidence for
+group polarization. Then we will
 brielfy introduce how our model of statistical inference for group 
 polarization may result in false inferences~\cite{Liddell2018}. In our
 Results we will then apply this model three case studies taken from the
@@ -275,30 +260,92 @@ scope of group polarization studies.
     \end{itemize}
 \end{enumerate}
 
-\section{Resuts}
+\section{Analysis}
 
-In this section we apply our model to three case studies taken from the 
-literature. 
+\begin{itemize}
+  \item 
+    We now turn to answer whether evidence for group polarization is reliable
+    or not using our computational model.
+  \item
+    Recall our model assumes that each participant holds some latent ``internal'' opinion
+    drawn from a continuous normal distribution. Each participant reports 
+    their opinion on a Likert-type ordinal scale. 
+  \item
+    Because there are many studies demonstrating the group polarization effect
+    using ordinal data, we do not evaluate each one. Instead we selected 
+    three influential examples: two studies administered in the United States
+    from two different decades, the 1960s and 2000s, and one administered in 
+    France in the 1960s.
+  \item
+    We find that changes in variance between pre- and post-discussion opinions
+    are important in determining whether or not published inferences are reliable.
+  \item
+    One of our case studies, the one from the US in 2010, does report variances,
+    which enables us to confidently determine that it contains no false inferences.
+  \item
+    The other two case studies, and the vast majority of group polarization
+    studies, do not report variance in pre- and post-discussion opinions.
+    Still, due to widely accepted theories of consensus formation, variance
+    in participant opinions decreases from pre- to post-discussion, which 
+    enables us to cautiously accept that evidence does indeed exist to support
+    the group polarization phenomenon in general.
+\end{itemize}
 
 \subsection{Case study I: A tale of two cities in Colorado, USA, in 2010}
 
-We begin by evalutating a study of attitudes about group 
-polarization on political topics
-in the United States. In \citeA{Schkade2010}, 
-although ordinal models are used for analysis of metric data, the paper 
-included information about the variance of opinions. This extra information
-allows us to conclude that this study does not make false inferences due to
-using a metric model on an ordinal dataset.
-
 \begin{enumerate}
-  \item Introduction of the study:
-    \begin{enumerate}
-      \item Specific research questions 
-      \item Experimental design (participant pool, survey questions,
-        methodology---measurement and analysis)
-    \end{enumerate}
+  \item 
+    We begin by evalutating a study of how conservative and liberal 
+    group attitudes change following deliberation about political topics
+    in the United States. 
+    \begin{itemize}
+      \item 
+        Specifically,~\citeA{Schkade2010} wanted to evaluate whether group 
+        polarization occurs symmetrically in conservative and liberal groups.
+        In other words, do ideological conservative and liberal groups both
+        shift opinions following deliberation? Are the shift magnitudes 
+        approximately the same, or does one group shift more?
+      \item
+        This question is important since in the US conservative and liberal
+        groups increasingly accuse one another of inappropriate and
+        dangerous extremism.
+      \item
+        \citeA{Schkade2010} recruited groups of six participants from
+        two different cities in the state of Colorado, USA, in 2005. One city,
+        Colorado Springs, is predominantly conservative, with about (TWO THIRDS?)
+        voting for George W. Bush in the 2004 presidential election. The other,
+        Boulder, had about (TWO THIRDS?) of its residents vote for John Kerry
+        in the 2004 presidential election. 
+    \end{itemize}
+      
+  \item Experimental design (participant pool, survey questions,
+    methodology---measurement and analysis)
+    \begin{itemize}
+      \item 
+        Groups gave their opinions, discussed, then gave opinions again on
+        three questions on current topics of political debate.
+      \item
+        THE QUESTIONS
+      \item
+        MEASUREMENT SCALE
+      \item
+        STATISTICAL PROCEDURES
+    \end{itemize}
   \item Study data and conclusions 
+    \begin{itemize}
+      \item 
+        Groups from both cities became more extreme following group discussion.
+      \item
+        Conservatives were found to shift more, but possiby due to liberals 
+        starting with more extreme positions. CHECK WHETHER OUR MODEL CAN
+        SHOW A FALSE POSITIVE ON GREATER CONSERVATIVE SHIFT---THIS WOULD ALSO BE
+        CONTRARY TO THE ASSERTION THAT CONSERVATIVES ARE LESS OPEN AND AGREEABLE.
+    \end{itemize}
   \item Representation of this experimental design with our model
+    \begin{itemize}
+      \item To adapt our model to this experiment, we set the number of 
+        bins to be $K=10$. There are X Boulder and Y Colorado Springs participants.
+    \end{itemize}
   \item Model results and determination of false inference due to 
     metric model on ordinal data
 \end{enumerate}
