@@ -475,11 +475,22 @@ Table~\ref{tab:caseStudiesSummary}.
 \end{itemize}
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{{Figures/Schkade2010/BoulderGlobalWarming_latentMean=10_tol=0.1}.pdf}
+  \begin{subfigure}[b]{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{{Figures/Schkade2010/BoulderGlobalWarming_latentMean=10_tol=0.1}.pdf}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{{Figures/Schkade2010/BoulderCivilUnions_latentMean=10_tol=0.1}.pdf}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{{Figures/Schkade2010/COSpringsCivilUnions_latentMean=2_tol=0.1}.pdf}
+  \end{subfigure}
   \caption{Success rate of recreating reported group opinions and opinion
-  shifts for different latent parameter combinations. Further parameter
-  combination examples---lower tolerance and other latent mean---are (WILL BE) given in
-the supplement.}
+    shifts for different latent parameter combinations. Further parameter
+    combination examples---lower tolerance and other latent mean---are (WILL BE) given in
+    the supplement.}
   \label{fig:successHeatmaps}
 \end{figure}
 
@@ -566,5 +577,59 @@ the supplement.}
 \setlength{\bibindent}{-\bibleftmargin}
 
 \bibliography{/Users/mt/workspace/papers/library.bib}
+
+\appendix
+
+\section{Additional computational results}
+\subsection{Case study 1: Schkade, et al., 2010}
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{{Figures/Schkade2010/BoulderGlobalWarming_latentMean=10_tol=0.05}.pdf}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{{Figures/Schkade2010/BoulderCivilUnions_latentMean=10_tol=0.05}.pdf}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{{Figures/Schkade2010/COSpringsCivilUnions_latentMean=2_tol=0.05}.pdf}
+  \end{subfigure}
+  \caption{Success rate of recreating reported group opinions and opinion
+    shifts for different latent parameter combinations. Further parameter
+    combination examples---lower tolerance and other latent mean---are (WILL BE) given in
+    the supplement.}
+    \label{fig:successHeatmapsSupplement}
+\end{figure}
+
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{{Figures/Schkade2010/BoulderGlobalWarming_latentMean=9.8_tol=0.1}.pdf} \\
+    \includegraphics[width=\textwidth]{{Figures/Schkade2010/BoulderGlobalWarming_latentMean=10_tol=0.1}.pdf} \\
+    \includegraphics[width=\textwidth]{{Figures/Schkade2010/BoulderGlobalWarming_latentMean=10.2_tol=0.1}.pdf} 
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{{Figures/Schkade2010/BoulderCivilUnions_latentMean=9.8_tol=0.1}.pdf} \\
+    \includegraphics[width=\textwidth]{{Figures/Schkade2010/BoulderCivilUnions_latentMean=10_tol=0.1}.pdf} \\
+    \includegraphics[width=\textwidth]{{Figures/Schkade2010/BoulderCivilUnions_latentMean=10.2_tol=0.1}.pdf} 
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{{Figures/Schkade2010/COSpringsCivilUnions_latentMean=1.9_tol=0.1}.pdf} \\
+    \includegraphics[width=\textwidth]{{Figures/Schkade2010/COSpringsCivilUnions_latentMean=2_tol=0.1}.pdf} \\
+    \includegraphics[width=\textwidth]{{Figures/Schkade2010/COSpringsCivilUnions_latentMean=2.1_tol=0.1}.pdf} \\
+  \end{subfigure}
+  \caption{Success rate of recreating reported group opinions and opinion
+    shifts for different latent parameter combinations. Further parameter
+    combination examples---lower tolerance and other latent mean---are (WILL BE) given in
+    the supplement.}
+  \label{fig:successHeatmaps}
+\end{figure}
 
 \end{document}
